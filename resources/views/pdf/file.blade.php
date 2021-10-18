@@ -28,11 +28,11 @@
             @switch($type)
                 @case('barcode')
                 <p style="text-align: center">{{$br->kode_barang}}</p>
-                <img src="data:image/png;base64,{!! DNS1D::getBarcodePNG($br->barcode, 'C128') !!}"/>
+                <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($br->barcode, 'C128')}}"/>
                 @break
                 @case('qrcode')
                 <p style="text-align: center">{{$br->kode_barang}}</p>
-                <img src="data:image/png;base64,{!! DNS2D::getBarcodePNG($br->barcode, 'QRCODE') !!}"/>
+                <img src="data:image/png;base64, {{DNS2D::getBarcodePNG($br->barcode, 'QRCODE')}}"/>
                 @break
             @endswitch
 

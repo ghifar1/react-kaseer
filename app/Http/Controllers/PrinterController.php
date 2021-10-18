@@ -15,4 +15,11 @@ class PrinterController extends Controller
 
         return $pdf->stream();
     }
+
+    public function printWeb($type)
+    {
+        $barangs = Barang::all();
+        return view('pdf.file', compact('barangs', 'type'));
+    }
+
 }
