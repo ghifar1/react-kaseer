@@ -18,7 +18,7 @@ export function CariItem({state, setState, notify})
 
     const ItemColumns = [
         {
-            field: 'nama_barang', headerName: 'Nama', width: 150
+            field: 'nama_barang', headerName: 'Nama', width: 100
         },
         {
             field: 'harga', headerName: 'Harga', width: 80
@@ -44,6 +44,8 @@ export function CariItem({state, setState, notify})
         {
             setCookie('cart', JSON.stringify([]))
         }
+
+        return;
 
     }, [])
 

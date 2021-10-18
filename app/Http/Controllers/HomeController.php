@@ -26,4 +26,9 @@ class HomeController extends Controller
     {
         return Inertia::render('Home');
     }
+
+    public function editData()
+    {
+        return Inertia::render('EditData');
+    }
 }

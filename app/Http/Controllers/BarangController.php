@@ -44,8 +44,25 @@ class BarangController extends Controller
     public function cariBarang(Request $request)
     {
         $barang = Barang::where('kode_barang', 'like', '%'.$request->nama_barang.'%')
-            ->orWhere('nama_barang', 'like', '%'.$request->nama_barang.'%')->get();
+            ->orWhere('nama_barang', 'like', '%'.$request->nama_barang.'%')
+            ->orWhere('barcode', 'like', '%'.$request->nama_barang.'%')->get();
 
         return response()->json($barang);
+    }
+
+    public function editBarang(Request $request)
+    {
+        $barang = Barang::find($request->id);
+        if(!$barang)
+        {
+            return response()->json(['status' => 'error', 'reason' => 'not found'], 400);
+        }
+        $barang->kode_barang = $request->kode_barang;
+        $barang->nama_barang = $request->nama_barang;
+        $barang->harga = $request->harga;
+        $barang->stok = $request->stok;
+        $barang->save();
+
+        return response()->json(['status' => 'OK'], 200);
     }
 }

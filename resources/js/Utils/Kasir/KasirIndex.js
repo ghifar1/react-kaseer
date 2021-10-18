@@ -20,11 +20,6 @@ export function KasirIndex()
     const [total, setTotal] = useState(0);
     const [confirmModal, setConfirmModal] = useState(false)
 
-    // useEffect(()=>{
-    //     fetch(`${base_url}/api/getBarang`).then((res) => res.json()).then((we) => console.log(we))
-    //     return;
-    // }, [])
-
     useEffect(()=>{
         let cart = cookies.cart;
         let temptotal = 0;
@@ -160,7 +155,7 @@ export function KasirIndex()
                 </Card>
             </Box>
             <CariItem state={cari} setState={setCari} notify={notify}/>
-            <CodeScan state={scan} onClick={scanChange}/>
+            {scan ? <CodeScan state={scan} onClick={scanChange} notify={notify}/> : ''}
             <ToastContainer
                 position="top-left"
                 autoClose={1500}

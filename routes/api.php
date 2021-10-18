@@ -23,3 +23,6 @@ Route::get('/getBarang', [\App\Http\Controllers\BarangController::class, 'getBar
 Route::post('/saveBarang', [\App\Http\Controllers\BarangController::class, 'tambahBarang']);
 Route::post('/cariBarang', [\App\Http\Controllers\BarangController::class, 'cariBarang']);
 Route::post('/createTransaction', [\App\Http\Controllers\TransactionController::class, 'createTransaction']);
+Route::get('/getHistoryTransaction', [\App\Http\Controllers\TransactionController::class, 'getHistoryTransaction']);
+Route::get('/getDayTransaction', [\App\Http\Controllers\TransactionController::class, 'getDayTransaction']);
+Route::post('/editBarang', [\App\Http\Controllers\BarangController::class, 'editBarang']);

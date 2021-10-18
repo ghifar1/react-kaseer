@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -17,6 +18,21 @@ class TransactionController extends Controller
         $trx->save();
 
         return response()->json(['status' => 'success'], 200);
+    }
+
+    public function getHistoryTransaction()
+    {
+        $trx = Transaction::all();
+
+        return response()->json($trx, 200);
+
+    }
+
+    public function getDayTransaction()
+    {
+        $trx = Transaction::whereDate('created_at', Carbon::today())->get();
+
+        return response()->json($trx);
     }
 
 }

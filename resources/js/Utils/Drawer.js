@@ -6,11 +6,13 @@ import PrintIcon from '@mui/icons-material/Print';
 import {useState} from "react";
 import {AddItem} from "./Kasir/AddItem";
 import {PrintItem} from "./Kasir/PrintItem";
+import {Link, usePage} from "@inertiajs/inertia-react";
 
 function Drawer({state, onOpen, onClose})
 {
     const [addItem, setAddItem] = useState(false);
     const [print, setPrint] = useState(false);
+    const {base_url} = usePage().props
 
     function openAddItem()
     {
@@ -30,6 +32,23 @@ function Drawer({state, onOpen, onClose})
             onKeyDown={onOpen}
         >
             <List>
+                <Link href={`${base_url}/home`}>
+                    <ListItem button key={"kasir"}>
+                        <ListItemIcon>
+                            <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText  primary={"Kasir"}/>
+                    </ListItem>
+                </Link>
+                <Link href={`${base_url}/editData`}>
+                    <ListItem button key={"edit_data"}>
+                        <ListItemIcon>
+                            <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText  primary={"Edit Data"}/>
+                    </ListItem>
+                </Link>
+                <Divider />
                 <ListItem onClick={openAddItem} button key={"barang"}>
                     <ListItemIcon>
                         <InboxIcon />
@@ -43,7 +62,6 @@ function Drawer({state, onOpen, onClose})
                     <ListItemText  primary={"Print Barang"}/>
                 </ListItem>
             </List>
-            <Divider />
         </Box>
     );
 

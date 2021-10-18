@@ -1,10 +1,8 @@
 import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import FolderIcon from '@mui/icons-material/Folder';
 import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import CalculateIcon from '@mui/icons-material/Calculate';
 
 export default function BottomBar({state, setState}) {
     const handleChange = (event, newValue) => {
@@ -12,11 +10,11 @@ export default function BottomBar({state, setState}) {
     };
 
     return (
-        <BottomNavigation sx={{ width: 500 }} value={state} onChange={handleChange}>
+        <BottomNavigation sx={{ width: '100%' }} value={state} onChange={handleChange}>
             <BottomNavigationAction
                 label="Kasir"
                 value="kasir"
-                icon={<RestoreIcon />}
+                icon={<CalculateIcon />}
             />
             <BottomNavigationAction
                 label="Riwayat"
