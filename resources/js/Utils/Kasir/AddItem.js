@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import {useState} from "react";
 import {usePage} from "@inertiajs/inertia-react";
 
-export function AddItem({state, onClick})
+export function AddItem({state, onClick, notify})
 {
     const {base_url, user_id} = usePage().props
     const [form, setForm] = useState({
@@ -35,6 +35,7 @@ export function AddItem({state, onClick})
             body: JSON.stringify(form)
         }).then((res) => res.json()).then((re) => console.log(re)).then(()=>{
             onClick();
+            notify("Barang berhasil ditambah")
             setForm(form => ({ ...form,kode_barang: "",
                 nama_barang: "",
                 harga: 0,

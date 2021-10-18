@@ -7,6 +7,8 @@ import {useState} from "react";
 import {AddItem} from "./Kasir/AddItem";
 import {PrintItem} from "./Kasir/PrintItem";
 import {Link, usePage} from "@inertiajs/inertia-react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Drawer({state, onOpen, onClose})
 {
@@ -22,6 +24,11 @@ function Drawer({state, onOpen, onClose})
     function openPrint()
     {
         setPrint(print => !print);
+    }
+
+    function notify(msg)
+    {
+        toast.success(msg)
     }
 
     const list = (anchor) => (
@@ -75,8 +82,18 @@ function Drawer({state, onOpen, onClose})
             >
                 {list('left')}
             </SwipeableDrawer>
-            <AddItem state={addItem} onClick={openAddItem}/>
+            <AddItem state={addItem} onClick={openAddItem} notify={notify}/>
             <PrintItem state={print} onClick={openPrint}/>
+            <ToastContainer
+                position="top-left"
+                autoClose={1500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover/>
         </div>
 
     )

@@ -93,6 +93,11 @@ export function KasirIndex()
         toast.success(msg)
     }
 
+    function notifyError(msg)
+    {
+        toast.error(msg)
+    }
+
     return (
         <div>
             <Box sx={{ display: 'grid', margin: 1,
@@ -155,7 +160,7 @@ export function KasirIndex()
                 </Card>
             </Box>
             <CariItem state={cari} setState={setCari} notify={notify}/>
-            {scan ? <CodeScan state={scan} onClick={scanChange} notify={notify}/> : ''}
+            {scan ? <CodeScan state={scan} onClick={scanChange} notify={notify} notifyError={notifyError}/> : ''}
             <ToastContainer
                 position="top-left"
                 autoClose={1500}

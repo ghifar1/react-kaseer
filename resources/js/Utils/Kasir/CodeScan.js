@@ -16,7 +16,7 @@ import {useEffect, useState} from "react";
 import {usePage} from "@inertiajs/inertia-react";
 import {useCookies} from "react-cookie";
 
-export function CodeScan({state, onClick, notify})
+export function CodeScan({state, onClick, notify, notifyError})
 {
     const {base_url} = usePage().props
     const [cookies, setCookie] = useCookies(['cart'])
@@ -65,7 +65,12 @@ export function CodeScan({state, onClick, notify})
                 })
 
             }).then((res) => res.json()).then((json) => {
-                addCart(json[0])
+                if(json[0])
+                {
+                    addCart(json[0])
+                } else {
+                    notifyError("Barang tidak ditemukan!")
+                }
             })
 
         }
